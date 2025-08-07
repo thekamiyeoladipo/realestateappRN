@@ -48,7 +48,7 @@ const SignIn = () => {
               />
               <Text
                 className="text-lg font-rubik-medium
-            text-black-300 ml-4"
+            text-black-300 ml-2"
               >
                 Continue with Google
               </Text>
