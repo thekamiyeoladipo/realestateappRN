@@ -25,6 +25,7 @@ interface GlobalProviderProps {
 }
 
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
+  console.log("GlobalProvider rendered 👍");
   const {
     data: user,
     loading,
