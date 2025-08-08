@@ -12,6 +12,8 @@ import { Redirect } from "expo-router";
 // It uses the login function from appwrite to handle the authentication process
 
 const SignIn = () => {
+
+  console.log("SignIn component rendered👍");
   
   const { refetch, loading, isLogged } = useGlobalContext();
 
@@ -27,8 +29,7 @@ const SignIn = () => {
     const result = await login();
 
     if (result) {
-      // Navigate to the home screen or perform any other action after successful login
-      console.log("Login successful", result);  
+     refetch({}); // Refetch user data after login 
     }
     else {
       Alert.alert('Login Failed', 'Please try again later.');
@@ -38,6 +39,7 @@ const SignIn = () => {
 
 
   return (
+
     <SafeAreaView className="bg-white h-full">
       <ScrollView
         contentContainerStyle={{
@@ -47,7 +49,7 @@ const SignIn = () => {
         
           <Image
             source={images.onboarding}
-            className="w-full h-4/6"
+            className="w-full h-4/6 self-center"
             resizeMode="contain"
           />
         
