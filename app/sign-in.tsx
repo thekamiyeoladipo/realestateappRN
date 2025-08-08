@@ -15,13 +15,13 @@ const SignIn = () => {
           height: "100%",
         }}
       >
-        <View className="flex items-center justify-center">
+        
           <Image
             source={images.onboarding}
-            className="w-full h-1/3"
+            className="w-full h-4/6"
             resizeMode="contain"
           />
-        </View>
+        
 
         <View className="px-10">
           <Text
