@@ -1,13 +1,38 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
+import { login } from "@/lib/appwrite";
+import { useGlobalContext } from "@/lib/global-provider";
+
+// SignIn component for handling user sign-in
+// This component displays a welcome message and a button to log in with Google
+// It uses the login function from appwrite to handle the authentication process
 
 const SignIn = () => {
-  const handleLogin = () => {
+  
+  const { refetch, loading, isLogged } = useGlobalContext();
+
+  // Function to handle Google login
+  // It calls the login function and handles the result
+  // If successful, it can navigate to another screen or perform other actions
+
+  const handleLogin = async () => {
     // Handle Google login logic here
+    const result = await login();
+
+    if (result) {
+      // Navigate to the home screen or perform any other action after successful login
+      console.log("Login successful", result);  
+    }
+    else {
+      Alert.alert('Login Failed', 'Please try again later.');
+    }
+
   };
+
+
   return (
     <SafeAreaView className="bg-white h-full">
       <ScrollView
