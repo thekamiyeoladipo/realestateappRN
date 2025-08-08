@@ -10,12 +10,18 @@ const SignIn = () => {
   };
   return (
     <SafeAreaView className="bg-white h-full">
-      <ScrollView contentContainerClassName="h-full">
-        <Image
-          source={images.onboarding}
-          className="w-full h-4/6"
-          resizeMode="contain"
-        />
+      <ScrollView
+        contentContainerStyle={{
+          height: "100%",
+        }}
+      >
+        <View className="flex items-center justify-center">
+          <Image
+            source={images.onboarding}
+            className="w-full h-1/3"
+            resizeMode="contain"
+          />
+        </View>
 
         <View className="px-10">
           <Text
@@ -37,10 +43,10 @@ const SignIn = () => {
           </Text>
           <TouchableOpacity
             className="bg-white shadow-md shadow-zinc-300
-          rounded-full w-full py-4 mt-5"
+          rounded-full w-full py-4 mt-5 mb-12"
             onPress={handleLogin}
           >
-            <View className="flex-row items-center justify-center ">
+            <View className="flex-row items-center justify-center">
               <Image
                 source={icons.google}
                 className="w-5 h-5"
@@ -55,6 +61,7 @@ const SignIn = () => {
             </View>
           </TouchableOpacity>
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );
