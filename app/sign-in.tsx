@@ -5,6 +5,7 @@ import images from "@/constants/images";
 import icons from "@/constants/icons";
 import { login } from "@/lib/appwrite";
 import { useGlobalContext } from "@/lib/global-provider";
+import { Redirect } from "expo-router";
 
 // SignIn component for handling user sign-in
 // This component displays a welcome message and a button to log in with Google
@@ -13,6 +14,9 @@ import { useGlobalContext } from "@/lib/global-provider";
 const SignIn = () => {
   
   const { refetch, loading, isLogged } = useGlobalContext();
+
+  if (!loading && isLogged) return <Redirect href="/" />;
+ 
 
   // Function to handle Google login
   // It calls the login function and handles the result
