@@ -30,7 +30,7 @@ const SettingsItem = ({icon, title, onPress, textStyle, showArrow = true} : Sett
 const Profile = () => {
   const { user, refetch } = useGlobalContext();
 
-
+// Function to handle logout
   const handleLogout = async () => {
      const result = await logout();
      if (result) {
@@ -41,10 +41,25 @@ const Profile = () => {
      }
   };
 
+// Function to confirm logout with an alert
+  const confirmLogout = () => {
+  Alert.alert(
+    "Confirm Logout",
+    "Are you sure you want to log out?",
+    [
+      { text: "Cancel", style: "cancel" },
+      {
+        text: "Yes, Logout",
+        style: "destructive",
+        onPress: handleLogout, // runs your existing logout code
+      },
+    ]
+  );
+};
 
   return (
     <SafeAreaView>
-       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerClassName="pb-32 px-7"
@@ -79,10 +94,15 @@ const Profile = () => {
           ))}
         </View>
 
-         <View className="flex flex-col mt-5 border-t border-primary-200 pt-5">
-          <SettingsItem icon={icons.logout} title='Logout'
-          textStyle='text-danger' showArrow={false} onPress={handleLogout} />
-         </View>
+        <View className="flex flex-col mt-5 border-t border-primary-200 pt-5">
+          <SettingsItem
+            icon={icons.logout}
+            title="Logout"
+            textStyle="text-danger"
+            showArrow={false}
+            onPress={confirmLogout} // <-- Changed here
+          />
+        </View>
 
       </ScrollView>
     </SafeAreaView>
