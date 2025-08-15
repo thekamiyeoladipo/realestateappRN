@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Image, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
@@ -12,13 +19,11 @@ import { Redirect } from "expo-router";
 // It uses the login function from appwrite to handle the authentication process
 
 const SignIn = () => {
-
   console.log("SignIn component rendered👍");
-  
+
   const { refetch, loading, isLogged } = useGlobalContext();
 
   if (!loading && isLogged) return <Redirect href="/" />;
- 
 
   // Function to handle Google login
   // It calls the login function and handles the result
@@ -29,30 +34,24 @@ const SignIn = () => {
     const result = await login();
 
     if (result) {
-     refetch({}); // Refetch user data after login 
+      refetch({}); // Refetch user data after login
+    } else {
+      Alert.alert("Login Failed", "Please try again later.");
     }
-    else {
-      Alert.alert('Login Failed', 'Please try again later.');
-    }
-
   };
 
-
   return (
-
     <SafeAreaView className="bg-white h-full">
       <ScrollView
         contentContainerStyle={{
           height: "100%",
         }}
       >
-        
-          <Image
-            source={images.onboarding}
-            className="w-full h-4/6 self-center"
-            resizeMode="contain"
-          />
-        
+        <Image
+          source={images.onboarding}
+          className="w-full h-4/6 self-center"
+          resizeMode="contain"
+        />
 
         <View className="px-10">
           <Text
@@ -73,7 +72,7 @@ const SignIn = () => {
             Login in with Google
           </Text>
           <TouchableOpacity
-            className="bg-white shadow-md shadow-zinc-300
+            className="bg-white shadow-2xl border border-gray-300  shadow-zinc-300
           rounded-full w-full py-4 mt-5 mb-12"
             onPress={handleLogin}
           >
@@ -92,7 +91,7 @@ const SignIn = () => {
             </View>
           </TouchableOpacity>
         </View>
-
+        
       </ScrollView>
     </SafeAreaView>
   );
