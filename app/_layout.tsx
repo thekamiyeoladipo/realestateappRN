@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import "./global.css"
 import { useFonts } from "expo-font";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import GlobalProvider from "@/lib/global-provider";
 
@@ -25,7 +25,7 @@ export default function RootLayout() {
     return null;
   }
 
-  const [showSplash, setShowSplash] = useState(true);
+
 
  
 
