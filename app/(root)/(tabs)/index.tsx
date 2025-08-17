@@ -2,9 +2,10 @@ import { Link } from 'expo-router'
 import { Image } from 'react-native';
 import images from '@/constants/images';
 import icons from '@/constants/icons';
-import { Text, View, StatusBar } from "react-native";
+import { Text, View, StatusBar, TouchableOpacity } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Search from '@/components/Search';
+
 
 const Index = () => {
   return (
@@ -35,6 +36,18 @@ const Index = () => {
         </View>
       </View>
       <Search />
+      <View className='my-4'>
+        <View className='px-2 flex flex-row items-center justify-between'>
+          <Text className='text-lg font-rubik-medium text-black-300'>
+           Featured
+          </Text>
+          <TouchableOpacity>
+            <Text className='text-sm font-rubik text-primary-300'>
+              See all
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
